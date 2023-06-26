@@ -21,26 +21,14 @@
                         <h2>Cálculo 1 - Velocidade de Corte</h2>
                         <div class="mb-3">
                             <label for="d">Valor de D:</label>
-                            <input type="text" name="d" id="d" class="form-control" >
+                            <input type="text" name="d" id="d" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="n">Valor de n:</label>
-                            <input type="text" name="n" id="n" class="form-control" >
+                            <input type="text" name="n" id="n" class="form-control">
                         </div>
                         <input type="submit" value="Calcular" name="calc1" class="btn btn-primary">
-                        <?php
-                        if (isset($_POST["calc1"])) {
-                            // Cálculo da Velocidade de Corte (Cálculo 1)
-                            if (isset($_POST["d"]) && isset($_POST["n"])) {
-                                $d = $_POST["d"];
-                                $n = $_POST["n"];
-                                $vc = (3.14 * $d * $n) / 1000;
-                                echo "<h3>A Velocidade de Corte é: $vc</h3>";
-                            } else {
-                                echo "<h3>Por favor, forneça valores para D e n para calcular a Velocidade de Corte.</h3>";
-                            }
-                        }
-                        ?>
+                        <h3 id="result1"></h3>
                     </div>
                 </div>
 
@@ -49,36 +37,22 @@
                         <h2>Cálculo 2 - Força de Corte</h2>
                         <div class="mb-3">
                             <label for="ks1">Valor de Ks1:</label>
-                            <input type="text" name="ks1" id="ks1" class="form-control" >
+                            <input type="text" name="ks1" id="ks1" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="ap">Valor de ap:</label>
-                            <input type="text" name="ap" id="ap" class="form-control" >
+                            <input type="text" name="ap" id="ap" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="f">Valor de f:</label>
-                            <input type="text" name="f" id="f" class="form-control" >
+                            <input type="text" name="f" id="f" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="c">Valor de C:</label>
-                            <input type="text" name="c" id="c" class="form-control" >
+                            <input type="text" name="c" id="c" class="form-control">
                         </div>
                         <input type="submit" value="Calcular" name="calc2" class="btn btn-primary">
-                        <?php
-                        if (isset($_POST["calc2"])) {
-                            // Cálculo da Força de Corte (Cálculo 2)
-                            if (isset($_POST["ks1"]) && isset($_POST["ap"]) && isset($_POST["f"]) && isset($_POST["c"])) {
-                                $ks1 = $_POST["ks1"];
-                                $ap = $_POST["ap"];
-                                $f = $_POST["f"];
-                                $c = $_POST["c"];
-                                $fc = $ks1 * $ap * pow($f, $c);
-                                echo "<h3>A Força de Corte é: $fc</h3>";
-                            } else {
-                                echo "<h3>Por favor, forneça valores para Ks1, ap, f e C para calcular a Força de Corte.</h3>";
-                            }
-                        }
-                        ?>
+                        <h3 id="result2"></h3>
                     </div>
                 </div>
             </div>
@@ -89,26 +63,14 @@
                         <h2>Cálculo 3 - Potência de Corte</h2>
                         <div class="mb-3">
                             <label for="fc">Valor de FC:</label>
-                            <input type="text" name="fc" id="fc" class="form-control" >
+                            <input type="text" name="fc" id="fc" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="vc">Valor de VC:</label>
-                            <input type="text" name="vc" id="vc" class="form-control" >
+                            <input type="text" name="vc" id="vc" class="form-control">
                         </div>
                         <input type="submit" value="Calcular" name="calc3" class="btn btn-primary">
-                        <?php
-                        if (isset($_POST["calc3"])) {
-                            // Cálculo da Potência de Corte (Cálculo 3)
-                            if (isset($_POST["fc"]) && isset($_POST["vc"])) {
-                                $fc = $_POST["fc"];
-                                $vc = $_POST["vc"];
-                                $pc = ($fc * $vc) / 60000;
-                                echo "<h3>A Potência de Corte é: $pc</h3>";
-                            } else {
-                                echo "<h3>Por favor, forneça valores para FC e VC para calcular a Potência de Corte.</h3>";
-                            }
-                        }
-                        ?>
+                        <h3 id="result3"></h3>
                     </div>
                 </div>
 
@@ -117,31 +79,56 @@
                         <h2>Cálculo 4 - Potência Efetiva do Motor</h2>
                         <div class="mb-3">
                             <label for="pc">Valor de PC:</label>
-                            <input type="text" name="pc" id="pc" class="form-control" >
+                            <input type="text" name="pc" id="pc" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label for="fr">Valor de FR:</label>
-                            <input type="text" name="fr" id="fr" class="form-control" >
+                            <input type="text" name="fr" id="fr" class="form-control">
                         </div>
                         <input type="submit" value="Calcular" name="calc4" class="btn btn-primary">
-                        <?php
-                        if (isset($_POST["calc4"])) {
-                            // Cálculo da Potência Efetiva do Motor (Cálculo 4)
-                            if (isset($_POST["pc"]) && isset($_POST["fr"])) {
-                                $pc = $_POST["pc"];
-                                $fr = $_POST["fr"];
-                                $pm = $pc / $fr;
-                                echo "<h3>A Potência Efetiva do Motor é: $pm</h3>";
-                            } else {
-                                echo "<h3>Por favor, forneça valores para PC e FR para calcular a Potência Efetiva do Motor.</h3>";
-                            }
-                        }
-                        ?>
+                        <h3 id="result4"></h3>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Verifica o preenchimento dos campos antes de habilitar o botão "Calcular"
+        function checkFields() {
+            const calc1Fields = ["d", "n"];
+            const calc2Fields = ["ks1", "ap", "f", "c"];
+            const calc3Fields = ["fc", "vc"];
+            const calc4Fields = ["pc", "fr"];
+
+            const calc1Filled = checkCalcFields(calc1Fields);
+            const calc2Filled = checkCalcFields(calc2Fields);
+            const calc3Filled = checkCalcFields(calc3Fields);
+            const calc4Filled = checkCalcFields(calc4Fields);
+
+            const calc1Button = document.querySelector('input[name="calc1"]');
+            const calc2Button = document.querySelector('input[name="calc2"]');
+            const calc3Button = document.querySelector('input[name="calc3"]');
+            const calc4Button = document.querySelector('input[name="calc4"]');
+
+            calc1Button.disabled = !calc1Filled;
+            calc2Button.disabled = !calc2Filled;
+            calc3Button.disabled = !calc3Filled;
+            calc4Button.disabled = !calc4Filled;
+        }
+
+        // Verifica se todos os campos de um cálculo estão preenchidos
+        function checkCalcFields(fields) {
+            return fields.every(field => {
+                const input = document.getElementById(field);
+                return input.value.trim() !== "";
+            });
+        }
+
+        // Adiciona evento de verificação aos campos de entrada
+        const inputs = document.querySelectorAll("input[type='text']");
+        inputs.forEach(input => {
+            input.addEventListener("keyup", checkFields);
+        });
+    </script>
 </body>
 </html>

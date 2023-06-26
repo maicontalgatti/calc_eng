@@ -13,7 +13,53 @@
     </style>
 </head>
 <body>
-    <!-- O conteúdo da calculadora está envolvido em uma div com a classe "container" -->
+    <?php
+    // Verificar se o formulário foi submetido
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Cálculo 1 - Velocidade de Corte
+        if (isset($_POST["calc1"])) {
+            $d = $_POST["d"];
+            $n = $_POST["n"];
+
+            $vc = (3.14 * $d * $n) / 1000;
+
+            echo "<h3>Resultado Cálculo 1 - Velocidade de Corte: " . $vc . "</h3>";
+        }
+
+        // Cálculo 2 - Força de Corte
+        if (isset($_POST["calc2"])) {
+            $ks1 = $_POST["ks1"];
+            $ap = $_POST["ap"];
+            $f = $_POST["f"];
+            $c = $_POST["c"];
+
+            $fc = $ks1 * $ap * pow($f, $c);
+
+            echo "<h3>Resultado Cálculo 2 - Força de Corte: " . $fc . "</h3>";
+        }
+
+        // Cálculo 3 - Potência de Corte
+        if (isset($_POST["calc3"])) {
+            $fc = $_POST["fc"];
+            $vc = $_POST["vc"];
+
+            $pc = ($fc * $vc) / 60000;
+
+            echo "<h3>Resultado Cálculo 3 - Potência de Corte: " . $pc . "</h3>";
+        }
+
+        // Cálculo 4 - Potência Efetiva do Motor
+        if (isset($_POST["calc4"])) {
+            $pc = $_POST["pc"];
+            $fr = $_POST["fr"];
+
+            $pm = $pc / $fr;
+
+            echo "<h3>Resultado Cálculo 4 - Potência Efetiva do Motor: " . $pm . "</h3>";
+        }
+    }
+    ?>
+
     <div class="container">
         <form method="post" action="">
             <div class="row">
@@ -21,20 +67,15 @@
                     <!-- Cálculo 1 - Velocidade de Corte -->
                     <div class="calc-container">
                         <h2>Cálculo 1 - Velocidade de Corte</h2>
-                        <!-- Campo de entrada para o valor de D -->
                         <div class="mb-3">
                             <label for="d">Valor de D:</label>
                             <input type="text" name="d" id="d" class="form-control">
                         </div>
-                        <!-- Campo de entrada para o valor de n -->
                         <div class="mb-3">
                             <label for="n">Valor de n:</label>
                             <input type="text" name="n" id="n" class="form-control">
                         </div>
-                        <!-- Botão de submit para calcular o resultado -->
-                        <input type="submit" value="Calcular" name="calc1" class="btn btn-primary" disabled>
-                        <!-- Elemento para exibir o resultado do cálculo -->
-                        <h3 id="result1"></h3>
+                        <input type="submit" value="Calcular" name="calc1" class="btn btn-primary">
                     </div>
                 </div>
 
@@ -42,7 +83,6 @@
                     <!-- Cálculo 2 - Força de Corte -->
                     <div class="calc-container">
                         <h2>Cálculo 2 - Força de Corte</h2>
-                        <!-- Campos de entrada para os valores de Ks1, ap, f e C -->
                         <div class="mb-3">
                             <label for="ks1">Valor de Ks1:</label>
                             <input type="text" name="ks1" id="ks1" class="form-control">
@@ -59,64 +99,45 @@
                             <label for="c">Valor de C:</label>
                             <input type="text" name="c" id="c" class="form-control">
                         </div>
-                        <!-- Botão de submit para calcular o resultado -->
-                        <input type="submit" value="Calcular" name="calc2" class="btn btn-primary" disabled>
-                        <!-- Elemento para exibir o resultado do cálculo -->
-                        <h3 id="result2"></h3>
+                        <input type="submit" value="Calcular" name="calc2" class="btn btn-primary">
                     </div>
                 </div>
             </div>
 
-            <!-- ... Restante do código com os outros cálculos ... -->
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Cálculo 3 - Potência de Corte -->
+                    <div class="calc-container">
+                        <h2>Cálculo 3 - Potência de Corte</h2>
+                        <div class="mb-3">
+                            <label for="fc">Valor de FC:</label>
+                            <input type="text" name="fc" id="fc" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="vc">Valor de VC:</label>
+                            <input type="text" name="vc" id="vc" class="form-control">
+                        </div>
+                        <input type="submit" value="Calcular" name="calc3" class="btn btn-primary">
+                    </div>
+                </div>
 
+                <div class="col-md-6">
+                    <!-- Cálculo 4 - Potência Efetiva do Motor -->
+                    <div class="calc-container">
+                        <h2>Cálculo 4 - Potência Efetiva do Motor</h2>
+                        <div class="mb-3">
+                            <label for="pc">Valor de PC:</label>
+                            <input type="text" name="pc" id="pc" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fr">Valor de FR:</label>
+                            <input type="text" name="fr" id="fr" class="form-control">
+                        </div>
+                        <input type="submit" value="Calcular" name="calc4" class="btn btn-primary">
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
-    <script>
-        // Função para verificar se todos os campos estão preenchidos e habilitar o botão de submit
-        function checkFields() {
-            // Lista dos campos de cada cálculo
-            const calc1Fields = ["d", "n"];
-            const calc2Fields = ["ks1", "ap", "f", "c"];
-
-            // Verificar se todos os campos do cálculo 1 estão preenchidos
-            const calc1Filled = checkCalcFields(calc1Fields);
-
-            // Verificar se todos os campos do cálculo 2 estão preenchidos
-            const calc2Filled = checkCalcFields(calc2Fields);
-
-            // Obter os botões de submit dos cálculos
-            const calc1Button = document.querySelector('input[name="calc1"]');
-            const calc2Button = document.querySelector('input[name="calc2"]');
-
-            // Habilitar ou desabilitar o botão de submit com base nos campos preenchidos
-            calc1Button.disabled = !calc1Filled;
-            calc2Button.disabled = !calc2Filled;
-        }
-
-        // Função para verificar se todos os campos de um cálculo estão preenchidos
-        function checkCalcFields(fields) {
-            // Verificar se todos os campos da lista estão preenchidos
-            return fields.every(field => {
-                // Obter o valor do campo de entrada
-                const input = document.getElementById(field);
-                // Verificar se o valor do campo está vazio ou não
-                return input.value.trim() !== "";
-            });
-        }
-
-        // Adicionar evento de verificação aos campos de entrada
-        const inputs = document.querySelectorAll("input[type='text']");
-        inputs.forEach(input => {
-            input.addEventListener("keyup", checkFields);
-        });
-
-        // Desabilitar os botões de submit ao carregar a página
-        window.addEventListener("load", function() {
-            const calc1Button = document.querySelector('input[name="calc1"]');
-            const calc2Button = document.querySelector('input[name="calc2"]');
-            calc1Button.disabled = true;
-            calc2Button.disabled = true;
-        });
-    </script>
 </body>
 </html>

@@ -21,11 +21,11 @@
                         <h2>Cálculo 1 - Velocidade de Corte</h2>
                         <div class="mb-3">
                             <label for="d">Valor de D:</label>
-                            <input type="text" name="d" id="d" class="form-control" required>
+                            <input type="text" name="d" id="d" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label for="n">Valor de n:</label>
-                            <input type="text" name="n" id="n" class="form-control" required>
+                            <input type="text" name="n" id="n" class="form-control" >
                         </div>
                         <input type="submit" value="Calcular" name="calc1" class="btn btn-primary">
                         <?php
@@ -49,19 +49,19 @@
                         <h2>Cálculo 2 - Força de Corte</h2>
                         <div class="mb-3">
                             <label for="ks1">Valor de Ks1:</label>
-                            <input type="text" name="ks1" id="ks1" class="form-control" required>
+                            <input type="text" name="ks1" id="ks1" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label for="ap">Valor de ap:</label>
-                            <input type="text" name="ap" id="ap" class="form-control" required>
+                            <input type="text" name="ap" id="ap" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label for="f">Valor de f:</label>
-                            <input type="text" name="f" id="f" class="form-control" required>
+                            <input type="text" name="f" id="f" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label for="c">Valor de C:</label>
-                            <input type="text" name="c" id="c" class="form-control" required>
+                            <input type="text" name="c" id="c" class="form-control" >
                         </div>
                         <input type="submit" value="Calcular" name="calc2" class="btn btn-primary">
                         <?php
@@ -89,11 +89,11 @@
                         <h2>Cálculo 3 - Potência de Corte</h2>
                         <div class="mb-3">
                             <label for="fc">Valor de FC:</label>
-                            <input type="text" name="fc" id="fc" class="form-control" required>
+                            <input type="text" name="fc" id="fc" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label for="vc">Valor de VC:</label>
-                            <input type="text" name="vc" id="vc" class="form-control" required>
+                            <input type="text" name="vc" id="vc" class="form-control" >
                         </div>
                         <input type="submit" value="Calcular" name="calc3" class="btn btn-primary">
                         <?php
@@ -117,11 +117,11 @@
                         <h2>Cálculo 4 - Potência Efetiva do Motor</h2>
                         <div class="mb-3">
                             <label for="pc">Valor de PC:</label>
-                            <input type="text" name="pc" id="pc" class="form-control" required>
+                            <input type="text" name="pc" id="pc" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label for="fr">Valor de FR:</label>
-                            <input type="text" name="fr" id="fr" class="form-control" required>
+                            <input type="text" name="fr" id="fr" class="form-control" >
                         </div>
                         <input type="submit" value="Calcular" name="calc4" class="btn btn-primary">
                         <?php
